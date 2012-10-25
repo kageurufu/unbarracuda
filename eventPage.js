@@ -11,8 +11,11 @@ chrome.extension.onMessage.addListener(
 				chrome.tabs.update(sender.tab.id, {url: request.url});
 			}
 		} else if (request.action == 'removeURL') {
-			removeURL(request.url);
+			for(i in request.urls)
+				removeURL(request.urls[i]);
 			updateProxy();
+			var urls = JSON.parse(localStorage.getItem('urls')) ;
+			sendResponse({urls: urls});
 		} else if (request.action == 'loadpopup') {
 			var urls = JSON.parse(localStorage.getItem('urls')) ;
 			var proxy = getProxy();
@@ -67,6 +70,10 @@ function addURL(url) {
 	var a = document.createElement('a');
 	a.href = url;
 	var host = a.host;
+	if(host.indexOf('www.') != -1) {
+		host = host.substring(host.indexOf('www.') + 4);
+	} 
+
 	var localStorageURL = localStorage.getItem('urls');
 	var data = localStorageURL ? JSON.parse(localStorageURL) : [];
 	//console.log(url, host, data);

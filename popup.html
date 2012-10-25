@@ -1,31 +1,38 @@
+<html>
 <head>
 <style>
-tr {
-  white-space: nowrap;
+body{
+	width: 300px;
 }
-.results {
-  text-align: right;
-  min-width: 6em;
-  color: black;
+frameset {
+	width: 100%;
+}
+select {
+	width:100%;
+	height: 100px;
 }
 </style>
 <script src="jquery.js"></script>
+<script src="popup.js"></script>
 </head>
 <body>
 <h1>UnBarracuda</h1>
-<p>
-	<label>Unblock URL: <input type="text" name="unblock-url" id="unblock-url"></label>
-	<input type="button" value="Unblock" id="unblock-button" name="unblock-button">
-</p>
+<fieldset>
+	<legend>Unblock a URL</legend>
+	<input type="text" name="unblock-url" id="unblock-url"><input type="button" value="Unblock" id="unblock-button" name="unblock-button">
+</fieldset>
 
-<ul id="unblocked-urls">
-</ul>
+<fieldset>
+	<legend>Remove a URL</legend>
+	<select name="unblocked-urls" id="unblocked-urls" multiple></select>
+	<input type="button" id="removeurl-button" name="removeurl-button" value="Remove URL">
+</fieldset>
 
-<p>
-	<label>Host: <input type="text" id="proxy-host" name="proxy-host" value=""></label>
-	<label>Port: <input type="text" id="proxy-port" name="proxy-port" value=""></label>
+<fieldset>
+	<legend>Proxy Settings</legend>
+	<label>Host: <input type="text" id="proxy-host" name="proxy-host" value=""></label><br />
+	<label>Port: <input type="text" id="proxy-port" name="proxy-port" value=""></label><br />
 	<input type="button" value="Change Proxy" id="proxy-button" name="proxy-button">
-</p>
-
-<script src="popup.js"></script>
+</fieldset>
 </body>
+</html>
