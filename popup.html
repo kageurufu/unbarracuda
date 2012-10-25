@@ -1,0 +1,31 @@
+<head>
+<style>
+tr {
+  white-space: nowrap;
+}
+.results {
+  text-align: right;
+  min-width: 6em;
+  color: black;
+}
+</style>
+<script src="jquery.js"></script>
+</head>
+<body>
+<h1>UnBarracuda</h1>
+<p>
+	<label>Unblock URL: <input type="text" name="unblock-url" id="unblock-url"></label>
+	<input type="button" value="Unblock" id="unblock-button" name="unblock-button">
+</p>
+
+<ul id="unblocked-urls">
+</ul>
+
+<p>
+	<label>Host: <input type="text" id="proxy-host" name="proxy-host" value="localhost"></label>
+	<label>Port: <input type="text" id="proxy-port" name="proxy-port" value="4567"></label>
+	<input type="button" value="Change Proxy" id="proxy-button" name="proxy-button">
+</p>
+
+<script src="popup.js"></script>
+</body>

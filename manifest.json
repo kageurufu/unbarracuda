@@ -1,0 +1,30 @@
+{
+  "name": "UnBarracuda",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Barracuda Avoidance",
+  "browser_action": {
+    "default_icon": "48.png",
+    "default_title": "Automagically unblocks websites from the barracuda",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
+  },
+  "web_accessible_resources": [
+    "48.png"
+  ],
+  "permissions": [
+    "proxy",
+    "notifications",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://172.27.72.27/*"],
+      "js": ["inPage.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
