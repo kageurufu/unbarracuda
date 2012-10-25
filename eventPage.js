@@ -13,7 +13,6 @@ chrome.extension.onMessage.addListener(
 		} else if (request.action == 'removeURL') {
 			removeURL(request.url);
 			updateProxy();
-
 		} else if (request.action == 'loadpopup') {
 			var urls = JSON.parse(localStorage.getItem('urls')) ;
 			var proxy = getProxy();
@@ -99,4 +98,14 @@ function setProxy(host, port) {
 	setTimeout(function() {notification.cancel();}, 2000);
 }
 
-updateProxy();
+function init() {
+	if(localStorage.getItem('urls') === null)
+		localStorage.setItem('urls', '[]');
+	if(localStorage.getItem('proxy_host') === null)
+		localStorage.setItem('proxy_host', 'localhost');
+	if(localStorage.getItem('proxy_port') === null)
+		localStorage.setItem('proxy_port', '4567');
+	updateProxy();	
+}
+
+init();
