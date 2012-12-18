@@ -70,10 +70,11 @@ function addURL(url) {
 	var a = document.createElement('a');
 	a.href = url;
 	var host = a.host;
-	if(host.indexOf('www.') != -1) {
-		host = host.substring(host.indexOf('www.') + 4);
-	} 
-
+	//get the actual domain, not subdomain. Prevents unblocking per subdomain, just to keep things snappy
+	if(host.split('.').length > 2) {
+		hostArr = host.split('.');
+		host = hostArr[hostArr.length - 2] + '.' + hostArr[hostArr.length - 1];
+	}
 	var localStorageURL = localStorage.getItem('urls');
 	var data = localStorageURL ? JSON.parse(localStorageURL) : [];
 	//console.log(url, host, data);

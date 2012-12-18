@@ -22,7 +22,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["http://172.27.72.27/*"],
+      "matches": ["http://*/*"],
       "js": ["inPage.js"],
       "run_at": "document_end"
     }
